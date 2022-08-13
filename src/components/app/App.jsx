@@ -4,26 +4,24 @@ import CharList from "../charList/CharList";
 import CharInfo from "../charInfo/CharInfo";
 
 import decoration from "../../resources/img/vision.png";
-import { Component } from "react";
+import { useState } from "react";
 
-class App extends Component {
-    state = {
-        selectedChar: null
+const App = (props) => {
+
+    const [selectedChar, setSelectedChar] = useState(null)
+
+    const onCharSelected = (selectedChar) => {
+        setSelectedChar(selectedChar)
     }
 
-    onCharSelected = (selectedChar) => {
-        this.setState({selectedChar})
-    }
-
-  render () {
-    const {selectedChar} = this.state;
+   
     return (
       <div className="app">
         <AppHeader />
         <main>
           <RandomChar />
           <div className="char__content">
-            <CharList onCharSelected={this.onCharSelected}/>
+            <CharList onCharSelected={onCharSelected}/>
             <CharInfo charId={selectedChar}/>
           </div>
           <img className="bg-decoration" src={decoration} alt="vision" />
@@ -31,6 +29,5 @@ class App extends Component {
       </div>
     );
   }
-}
 
 export default App;

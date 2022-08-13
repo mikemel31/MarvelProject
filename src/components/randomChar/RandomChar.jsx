@@ -1,43 +1,27 @@
-import { Component } from "react";
-import MarvelService from "../../services/MarvelService";
+import { useState, useEffect } from "react";
+import useMarvelService from "../../services/MarvelService";
 import "./randomChar.scss";
 import mjolnir from "../../resources/img/mjolnir.png";
 import Spinner from "../spinner/spinner";
 import ErrorMessage from "../errorMessage/ErrorMessage";
 
-class RandomChar extends Component {
-  state = {
-    char: {},
-    loading: true,
-    error: false
-  };
+const RandomChar = (props) => {
 
-  marvelService = new MarvelService();
+  const [char, setChar] = useState({});
 
-  componentDidMount() {
-    this.updateChar();
+  const {loading, error, getCharacter, clearError} = useMarvelService();  
+  
+  const onCharLoaded = (char) => {
+    setChar(char);
   }
-
-  onCharLoaded = (char) => {
-    this.setState({ char, loading: false });
-  };
-
-  onError = () => {
-    this.setState({
-        loading: false,
-        error: true
-    })
-  }
-
-  updateChar = () => {
-    this.setState({loading: true, error: false })
+  
+  const updateChar = () => {
+    clearError();
     const id = Math.floor(Math.random() * (1011400 - 1011000) + 1011000);
-    this.marvelService.getCharacter(id).then(this.onCharLoaded).catch(this.onError);
+    getCharacter(id).then(onCharLoaded)
   };
-
-  render() {
-    const updateChar = this.updateChar;
-    const { char, loading, error } = this.state;
+  
+  useEffect(() => {updateChar()}, [])
 
     const spinner = loading ? <Spinner /> : null;
     const errorMessage = error ? <ErrorMessage /> : null;
@@ -65,11 +49,11 @@ class RandomChar extends Component {
       </div>
     );
   }
-}
 
 const View = ({char}) => {
     const {name, description, thumbnail, homepage, wiki} = char;
-    let imgFit = () => {if (thumbnail.indexOf('image_not_available') !== -1) {return {objectFit: 'fill'}}};
+
+    let imgFit = () => {if (thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg') {return {objectFit: 'fill'}}};
     return (
         <div className="randomchar__block">
             <img src={thumbnail} alt="Random character" className="randomchar__img" style={imgFit()}/>
