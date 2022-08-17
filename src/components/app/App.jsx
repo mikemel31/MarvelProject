@@ -10,8 +10,8 @@ import { Suspense } from "react";
 import AppHeader from "../appHeader/AppHeader";
 
 import Main from "../pages/Main";
+import {altSpinner as Spinner} from '../spinner/spinner'
 const SingleComic = lazy(() => import("../singleComic/SingleComic"));
-const Spinner = lazy(() => import('../spinner/spinner'))
 const ComicsPage = lazy(() => import('../pages/ComicsPage'))
 const Page404 = lazy(() => import('../pages/404'))
 

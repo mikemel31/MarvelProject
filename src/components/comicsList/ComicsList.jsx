@@ -45,6 +45,7 @@ const ComicsList = () => {
               src={item.thumbnail}
               alt={item.title}
               className="comics__item-img"
+              loading="lazy"
             />
             <div className="comics__item-name">{item.title}</div>
             <div className="comics__item-price">{item.price}$</div>
