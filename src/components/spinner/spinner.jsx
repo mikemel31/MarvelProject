@@ -1,14 +1,14 @@
-const Spinner = () => {
+const Spinner = ({width = 'auto', margin = '0'}) => {
   return (
     <img
       src={process.env.PUBLIC_URL + "/spinner.gif"}
       alt="Spinner"
       style={{
         display: "block",
-        // width: "250px",
+        width: width,
         // height: "250px",
         objectFit: "contain",
-        margin: "0 auto",
+        margin: `${margin} auto`,
       }}
     />
   );

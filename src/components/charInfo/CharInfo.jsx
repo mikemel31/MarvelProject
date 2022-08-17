@@ -42,7 +42,7 @@ const CharInfo = (props) => {
 };
 
 const View = ({ char }) => {
-  const { name, description, thumbnail, homepage, wiki, comics } = char;
+  const { name, description, thumbnail, homepageHref, wikiHref, comics } = char;
   const imgFit =
     thumbnail !==
     "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg"
@@ -55,10 +55,10 @@ const View = ({ char }) => {
         <div>
           <div className="char__info-name">{name}</div>
           <div className="char__btns">
-            <a href={homepage} className="button button__main">
+            <a href={homepageHref} target="_blank" className="button button__main">
               <div className="inner">homepage</div>
             </a>
-            <a href={wiki} className="button button__secondary">
+            <a href={wikiHref} target="_blank" className="button button__secondary">
               <div className="inner">Wiki</div>
             </a>
           </div>

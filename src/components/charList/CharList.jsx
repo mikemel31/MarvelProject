@@ -82,12 +82,14 @@ const CharList = (props) => {
   const items = listRender(charList);
   const errorMessage = error ? <ErrorMessage /> : null;
   const spinner = loading && !loadingMore ? <Spinner /> : null;
+  const downSpinner = loadingMore ? <Spinner width={250} margin={'10px'}/> : null
 
   return (
     <div className="char__list">
       {errorMessage}
       {spinner}
       {items}
+      {downSpinner}
       <button
         disabled={loadingMore}
         className="button button__main button__long"

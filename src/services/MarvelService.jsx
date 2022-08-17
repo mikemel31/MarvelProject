@@ -21,8 +21,6 @@ const useMarvelService = () => {
   };
 
   const _transformedCharacter = (char) => {
-    const wikihref = char.urls[0].url;
-    const homepagehref = char.urls[1].url
     const chardescription = () => {if (char.description.length !==0) {
       if (char.description.length > 200) { return char.description.substring(0, 200).concat('...') } else { 
         return char.description
@@ -34,8 +32,8 @@ const useMarvelService = () => {
       name: char.name,
       description: chardescription() ,
       thumbnail: char.thumbnail.path + "." + char.thumbnail.extension,
-      homepageHref: homepagehref,
-      wikiHref: wikihref,
+      homepageHref: char.urls[1].url,
+      wikiHref: char.urls[0].url,
       comics: char.comics.items
     };
   };
@@ -52,7 +50,6 @@ const useMarvelService = () => {
 
   const _transformedComics = (item) => {
     const price = item.prices[0].price ? item.prices[0].price : 'NOT AVAILABLE';
-    console.log(item.prices, `${item.thumbnail.path}.${item.thumbnail.extension}`)
     return {
       thumbnail: `${item.thumbnail.path}.${item.thumbnail.extension}`,
       id: item.id,

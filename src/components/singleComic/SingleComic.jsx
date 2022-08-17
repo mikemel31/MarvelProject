@@ -27,7 +27,6 @@ const SingleComic = (props) => {
 
   const View = () => {
     const { title, description, thumbnail, pages, lang, price } = comic;
-    console.log(comic);
 
     return (
       <>

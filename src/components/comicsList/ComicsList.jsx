@@ -39,14 +39,6 @@ const ComicsList = () => {
         <li
           className="comics__item"
           key={item.id}
-        //   onClick={() => {
-        //     props.onCharSelected(item.id);
-        //   }}
-        //   onKeyPress={(e) => {
-        //     if (e.key === " " || e.key === "Enter") {
-        //       props.onCharSelected(item.id);
-        //     }
-        //   }}
         >
           <Link to={`/comics/${item.id}`}>
             <img
@@ -66,12 +58,14 @@ const ComicsList = () => {
   const items = listRender(comicsList);
   const errorMessage = error ? <ErrorMessage /> : null;
   const spinner = loading && !loadingMore ? <Spinner /> : null;
+  const downSpinner = loadingMore ? <Spinner width={250}/> : null
 
   return (
     <div className="comics__list">
         {errorMessage}
         {spinner}
         {items}
+        {downSpinner}
       <button
         disabled={loadingMore}
         className="button button__main button__long"

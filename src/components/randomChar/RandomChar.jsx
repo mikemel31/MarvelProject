@@ -52,7 +52,7 @@ const RandomChar = (props) => {
   }
 
 const View = ({char}) => {
-    const {name, description, thumbnail, homepage, wiki} = char;
+    const {name, description, thumbnail, homepageHref, wikiHref} = char;
 
     let imgFit = () => {if (thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg') {return {objectFit: 'fill'}}};
     return (
@@ -64,10 +64,10 @@ const View = ({char}) => {
                     {description}
                 </p>
                 <div className="randomchar__btns">
-                    <a href={homepage} className="button button__main">
+                    <a href={homepageHref} target="_blank" className="button button__main">
                         <div className="inner">homepage</div>
                     </a>
-                    <a href={wiki} className="button button__secondary">
+                    <a href={wikiHref} target="_blank" className="button button__secondary">
                         <div className="inner">Wiki</div>
                     </a>
                 </div>
