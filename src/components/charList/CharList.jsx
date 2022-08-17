@@ -48,7 +48,7 @@ const CharList = (props) => {
       let imgStyle = { objectFit: "cover" };
       if (
         item.thumbnail ===
-        "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg"
+        "https://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg"
       ) {
         imgStyle = { objectFit: "unset" };
       }

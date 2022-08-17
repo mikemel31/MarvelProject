@@ -31,10 +31,10 @@ const useMarvelService = () => {
       id: char.id,
       name: char.name,
       description: chardescription() ,
-      thumbnail: char.thumbnail.path + "." + char.thumbnail.extension,
+      thumbnail: char.thumbnail.path.slice(0,4) + 's' + char.thumbnail.path.slice(4) + "." + char.thumbnail.extension,
       homepageHref: char.urls[1].url,
       wikiHref: char.urls[0].url,
-      comics: char.comics.items
+      comics: char.comics.items.slice(0,10)
     };
   };
 
@@ -51,7 +51,7 @@ const useMarvelService = () => {
   const _transformedComics = (item) => {
     const price = item.prices[0].price ? item.prices[0].price : 'NOT AVAILABLE';
     return {
-      thumbnail: `${item.thumbnail.path}.${item.thumbnail.extension}`,
+      thumbnail: `${item.thumbnail.path.slice(0,4)}s${item.thumbnail.path.slice(4)}.${item.thumbnail.extension}`,
       id: item.id,
       title: item.title,
       price: price 
