@@ -17,7 +17,7 @@ const Spinner = ({width = 'auto', margin = '0'}) => {
 export const altSpinner = () => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
+      xmlns="https://www.w3.org/2000/svg"
       style={{ margin: "0 auto", background: "none", display: "block" }}
       width="200px"
       height="200px"

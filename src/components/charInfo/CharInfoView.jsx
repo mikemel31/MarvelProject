@@ -2,7 +2,7 @@ const View = ({ char }) => {
     const { name, description, thumbnail, homepageHref, wikiHref, comics } = char;
     const imgFit =
       thumbnail !==
-      "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg"
+      "https://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg"
         ? null
         : { objectFit: "unset" };
     return (
