@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
+
 import useMarvelService from "../../services/MarvelService";
 import "./randomChar.scss";
 import mjolnir from "../../resources/img/mjolnir.png";
-import Spinner from "../spinner/spinner";
+import {altSpinner as Spinner} from "../spinner/spinner";
 import ErrorMessage from "../errorMessage/ErrorMessage";
 
 const RandomChar = (props) => {
@@ -25,7 +26,7 @@ const RandomChar = (props) => {
 
     const spinner = loading ? <Spinner /> : null;
     const errorMessage = error ? <ErrorMessage /> : null;
-    const content = !(error || loading) ? <View char={char} /> : null;
+    const content = !(loading || error || !char) ? <View char={char} /> : null;
 
     return (
       <div className="randomchar">

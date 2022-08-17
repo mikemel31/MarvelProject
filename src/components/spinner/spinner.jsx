@@ -1,5 +1,21 @@
 const Spinner = () => {
   return (
+    <img
+      src={process.env.PUBLIC_URL + "/spinner.gif"}
+      alt="Spinner"
+      style={{
+        display: "block",
+        // width: "250px",
+        // height: "250px",
+        objectFit: "contain",
+        margin: "0 auto",
+      }}
+    />
+  );
+};
+
+export const altSpinner = () => {
+  return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       style={{ margin: "0 auto", background: "none", display: "block" }}
