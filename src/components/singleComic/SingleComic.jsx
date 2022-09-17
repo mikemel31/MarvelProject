@@ -2,6 +2,7 @@ import "./singleComic.scss";
 import useMarvelService from "../../services/MarvelService";
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 import { altSpinner as Spinner } from "../spinner/spinner";
 import ErrorMessage from "../errorMessage/ErrorMessage";
@@ -30,6 +31,10 @@ const SingleComic = (props) => {
 
     return (
       <>
+        <Helmet>
+          <meta name="description" content={`${title} comics book`} />
+          <title>{title}</title>
+        </Helmet>
         <img src={thumbnail} alt={title} className="single-comic__img" />
         <div className="single-comic__info">
           <h2 className="single-comic__name">{title}</h2>
